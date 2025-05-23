@@ -1,14 +1,9 @@
 services:
   
-  frontend:
+  front:
     build: ./front
+    container_name: front_c 
     ports:
-      - "3000:80"
-    networks:
-      - app-network
-    # depends_on:
-    #   - backend
-
-networks:
-  app-network:
-    driver: bridge
+      - "5173:5173"
+    stdin_open: true
+    
