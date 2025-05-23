@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: 🔄 Checkout du code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 🟢 Setup Node.js
         uses: actions/upload-artifact@v4
