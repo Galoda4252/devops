@@ -2,8 +2,8 @@ services:
   
   front:
     build: ./front
-    container_name: front_c 
+    container_name: react
     ports:
-      - "5173:5173"
+      - "3000:80"
     stdin_open: true
-    
+    tty: true
