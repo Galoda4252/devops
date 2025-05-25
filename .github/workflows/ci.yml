@@ -39,12 +39,12 @@ jobs:
 
       - name: 📦 Extraire le build du conteneur
         run: |
-          docker create --name extract-container front-app
-          docker cp extract-container:/usr/share/nginx/html ./dist
-          docker rm extract-container
+            docker create --name extract-container front-app
+            docker cp extract-container:/usr/share/nginx/html ./dist
+            docker rm extract-container
 
       - name: 📤 Upload build artifact
-        uses: actions/upload-artifact@v3.1.3
+        uses: actions/upload-artifact@v3
         with:
           name: frontend-dist
           path: ./dist
