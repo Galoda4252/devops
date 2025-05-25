@@ -15,6 +15,10 @@ jobs:
         working-directory: ./front
 
     steps:
+
+      - name: 🔄 Mettre à jour les actions
+        run: sudo apt-get update && sudo apt-get upgrade -y
+
       - name: 🔄 Checkout du code
         uses: actions/checkout@v4
 
@@ -34,7 +38,7 @@ jobs:
         run: npm run build
 
       - name: 📤 Upload du build (artifacts)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: frontend-dist
           path: front/dist
