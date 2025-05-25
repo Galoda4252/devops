@@ -48,7 +48,7 @@ jobs:
             docker rm extract-container
 
       - name: 📤 Upload build artifact
-        uses: actions/upload-artifact@3da9fdc4ce9ab86e115d5d33ff6f8033aa4eab2b
+        uses: actions/upload-artifact@v4
         with:
           name: frontend-dist
           path: ./dist
