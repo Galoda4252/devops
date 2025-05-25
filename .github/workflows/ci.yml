@@ -15,12 +15,13 @@ jobs:
         working-directory: ./front
 
     steps:
-
+      
+      - name: 🔄 Checkout du code
+        uses: actions/checkout@v4
+        
       - name: 🔄 Mettre à jour les actions
         run: sudo apt-get update && sudo apt-get upgrade -y
 
-      - name: 🔄 Checkout du code
-        uses: actions/checkout@v4
 
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
