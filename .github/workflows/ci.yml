@@ -41,7 +41,8 @@ jobs:
         run: rm -rf ~/.npm ~/.cache ~/.github
 
       - name: 🐳 Build Docker image
-        run: docker build -t devops-front ./front
+        run: docker-compose up --build
+
 
       - name: 📦 Extraire le build du conteneur
         run: |
