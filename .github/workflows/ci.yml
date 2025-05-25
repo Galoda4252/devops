@@ -37,21 +37,20 @@ jobs:
       #   run: npm test -- --watchAll=false
 
 
-      - name: 🧼 Clear Actions Cache
-        run: rm -rf ~/.npm ~/.cache ~/.github
+      # - name: 🧼 Clear Actions Cache
+      #   run: rm -rf ~/.npm ~/.cache ~/.github
 
-      - name: 🐳 Build Docker image
-        run: docker-compose up --build
+      # - name: 🐳 Build Docker image
+      #   run: docker build -t devops-front ./front
 
+      # - name: 📦 Extraire le build du conteneur
+      #   run: |
+      #       docker create --name extract-dist devops-front
+      #       docker cp extract-dist:/usr/share/nginx/html ./dist
+      #       docker rm extract-dist
 
-      - name: 📦 Extraire le build du conteneur
-        run: |
-            docker create --name extract-dist devops-front
-            docker cp extract-dist:/usr/share/nginx/html ./dist
-            docker rm extract-dist
-
-      # - name: ⚙️ Build de l'app
-      #   run: npx tsc && npm run build
+      - name: ⚙️ Build de l'app
+        run: npx tsc && npm run build
 
 
       - name: 📤 Upload build artifact
