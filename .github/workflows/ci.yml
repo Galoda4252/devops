@@ -34,6 +34,10 @@ jobs:
       # - name: ✅ Lancer les tests
       #   run: npm test -- --watchAll=false
 
+
+      - name: 🧼 Clear Actions Cache
+        run: rm -rf ~/.npm ~/.cache ~/.github
+
       - name: 🐳 Build Docker image
         run: docker build -t front-app ./front
 
@@ -44,7 +48,7 @@ jobs:
             docker rm extract-container
 
       - name: 📤 Upload build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@3da9fdc4ce9ab86e115d5d33ff6f8033aa4eab2b
         with:
           name: frontend-dist
           path: ./dist
