@@ -35,10 +35,13 @@ jobs:
       #   run: npm test -- --watchAll=false
 
       - name: ⚙️ Build de l'app
-        run: npm run build
+        run: npx tsc && npm run build
+
+      - name: 🛠 Debug Build Output
+        run: ls -l front/dist
 
       - name: 📤 Upload du build (artifacts)
-        uses: actions/upload-artifact@v3.1.3
+        uses: actions/upload-artifact@v3
         with:
           name: frontend-dist
           path: front/dist
