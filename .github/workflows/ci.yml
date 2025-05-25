@@ -18,7 +18,7 @@ jobs:
       
       - name: 🔄 Checkout du code
         uses: actions/checkout@v4
-        
+
       - name: 🔄 Mettre à jour les actions
         run: sudo apt-get update && sudo apt-get upgrade -y
 
@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: front/package-lock.json
 
       - name: 📦 Installer les dépendances
         run: npm install
