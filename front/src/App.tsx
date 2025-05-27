@@ -4,14 +4,12 @@ import viteLogo from '/vite.svg';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  
   const [a, setA] = useState('');
   const [b, setB] = useState('');
   const [result, setResult] = useState<number | null>(null);
 
-  const increment = () => {
-    setCount(count + 1);
-  };
+  
 
   const addition = (a: number, b: number): number => {
     return a + b;
@@ -63,7 +61,7 @@ function App() {
         </div>
         <button onClick={handleAddition}>Additionner</button>
         {result !== null && <p>Résultat : {result}</p>}
-        <button onClick={increment}>Incrémenter ({count})</button>
+       
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
