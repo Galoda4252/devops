@@ -41,7 +41,7 @@ jobs:
       #   run: rm -rf ~/.npm ~/.cache ~/.github
 
       - name: 🐳 Build Docker image
-        run: docker build -t frontend ./front
+        run: docker build -t frontend-front ./front
         
 
       # - name: 📦 Extraire le build du conteneur
