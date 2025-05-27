@@ -37,8 +37,7 @@ jobs:
       #   run: npm test -- --watchAll=false
 
 
-      # - name: 🧼 Clear Actions Cache
-      #   run: rm -rf ~/.npm ~/.cache ~/.github
+      
 
       - name: 🐳 Connexion à DockerHub
         uses: docker/login-action@v3
@@ -53,12 +52,7 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/frontend-front:latest
 
 
-      # - name: 📦 Extraire le build du conteneur
-      #   run: |
-      #       docker create --name extract-dist devops-front
-      #       docker cp extract-dist:/usr/share/nginx/html ./dist
-      #       docker rm extract-dist
-
+      
       - name: ⚙️ Build de l'app
         run: npx tsc && npm run build
 
