@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./front  # Définit le dossier de travail pour les commandes
+        working-directory: ./front  # Définit le dossier de travail par défaut
 
     steps:
       - name: 🔄 Checkout du code
@@ -40,13 +40,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: 📤 Push de l'image Docker
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/frontend-front:latest
-     
       - name: 🐳 Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-front:latest -f ./front/Dockerfile ./front
-        working-directory: .  # Revenir à la racine pour le build docker
+        working-directory: .  # On revient à la racine pour docker build
 
+      - name: 📤 Push de l'image Docker
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/frontend-front:latest
 
       - name: 📤 Upload build artifact
         uses: actions/upload-artifact@v4
