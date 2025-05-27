@@ -12,16 +12,11 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./front
+        working-directory: ./front  # Définit le dossier de travail pour les commandes
 
     steps:
-      
       - name: 🔄 Checkout du code
         uses: actions/checkout@v4
-
-    #  - name: 🔄 Mettre à jour les actions
-    #    run: sudo apt-get update && sudo apt-get upgrade -y
-
 
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
@@ -36,8 +31,8 @@ jobs:
       # - name: ✅ Lancer les tests
       #   run: npm test -- --watchAll=false
 
-
-      
+      - name: ⚙️ Build de l'app
+        run: npx tsc && npm run build
 
       - name: 🐳 Connexion à DockerHub
         uses: docker/login-action@v3
@@ -47,16 +42,10 @@ jobs:
 
       - name: 🐳 Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend-front:latest -f ./front/Dockerfile ./front
-        working-directory: .
+        working-directory: .  # Revenir à la racine pour le build docker
 
       - name: 📤 Push de l'image Docker
         run: docker push ${{ secrets.DOCKER_USERNAME }}/frontend-front:latest
-
-
-      
-      - name: ⚙️ Build de l'app
-        run: npx tsc && npm run build
-
 
       - name: 📤 Upload build artifact
         uses: actions/upload-artifact@v4
