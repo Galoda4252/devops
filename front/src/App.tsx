@@ -1,13 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
-  const increment = ()=>{
-    setCount(count+1)
-  }
+  const [a, setA] = useState('');
+  const [b, setB] = useState('');
+  const [result, setResult] = useState<number | null>(null);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const addition = (a: number, b: number): number => {
+    return a + b;
+  };
+
+  const handleAddition = () => {
+    const numA = parseFloat(a);
+    const numB = parseFloat(b);
+    if (!isNaN(numA) && !isNaN(numB)) {
+      const sum = addition(numA, numB);
+      setResult(sum);
+    } else {
+      setResult(null);
+      alert('Veuillez entrer deux nombres valides');
+    }
+  };
 
   return (
     <>
@@ -21,9 +41,29 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={increment}>
-          countera 8{count}
-        </button>
+        <div>
+          <label>
+            Nombre A :{' '}
+            <input
+              type="text"
+              value={a}
+              onChange={(e) => setA(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Nombre B :{' '}
+            <input
+              type="text"
+              value={b}
+              onChange={(e) => setB(e.target.value)}
+            />
+          </label>
+        </div>
+        <button onClick={handleAddition}>Additionner</button>
+        {result !== null && <p>Résultat : {result}</p>}
+        <button onClick={increment}>Incrémenter ({count})</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -32,7 +72,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
