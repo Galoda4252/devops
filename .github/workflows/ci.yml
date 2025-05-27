@@ -39,9 +39,11 @@ jobs:
 
       # - name: 🧼 Clear Actions Cache
       #   run: rm -rf ~/.npm ~/.cache ~/.github
-
-      - name: 🐳 Build Docker image
-        run: docker build -t devops-front -f ./front/Dockerfile ./front
+      - name: 📁 Liste les fichiers dans ./front
+        run: ls -al
+        working-directory: ./front
+      # - name: 🐳 Build Docker image
+      #   run: docker build -t devops-front -f ./front/Dockerfile ./front
       
 
       # - name: 📦 Extraire le build du conteneur
